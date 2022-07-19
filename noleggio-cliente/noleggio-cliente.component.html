@@ -1,0 +1,105 @@
+<div class="container lg">
+  <div class="row">
+    <h2 class="text-info">Noleggio Auto</h2>
+    <div class="col-lg-8">
+      <form [formGroup]="form">
+        <div class="row">
+          <hr style="
+              height: 5px;
+              background: teal;
+              margin: 20px 0;
+              box-shadow: 0px 0px 4px 2px rgba(204, 204, 204, 1);
+            " />
+
+          <!-- <label for="selezNoleggiatore">chi ti ha servito:</label>
+          <select class="form-select" id="selezNoleggiatore" formControlName="noleggiatoreId" (change)="onSwitch('noleggiatoreId')">
+            <option *ngFor="let noleggiatore of liste.noleggiatores" [ngValue]="noleggiatore.id">
+              {{ noleggiatore.nome }} - {{ noleggiatore.cognome }}
+            </option>
+          </select> -->
+
+          <label for="selezAuto">Seleziona l'auto che desideri noleggiare</label>
+          <select class="form-select" id="selezAuto" formControlName="vetturaId" (change)="onSwitch('vetturaId')">
+            <option *ngFor="let vettura of liste.vetturas" [ngValue]="vettura.id">
+              {{ vettura.marca }} - {{ vettura.modello }}
+            </option>
+          </select>
+          <label for="selezContratto">Scegli il tipo di contratto:</label>
+          <select class="form-select" id="selezContratto" formControlName="contrattoId" (change)="onSwitch('contrattoId')">
+            <option *ngFor="let contratto of liste.contrattos" [ngValue]="contratto.id">
+              {{ contratto.titoloContratto }} - {{ contratto.costoMensile }} €
+            </option>
+          </select>
+
+          <label for="dataInizio">Data inizio noleggio</label>
+          <input type="date" class="form-control" id="dataInizio" placeholder="Data inizio Noleggio"
+            formControlName="dataInizio" min="{{ dataInizio }}" />
+          <label for="dataReso">Data reso noleggio</label>
+          <input type="date" class="form-control" id="dataReso" placeholder="Data reso Noleggio"
+            formControlName="dataReso" min="{{ dataReso }}" />
+
+          <hr style="
+              height: 5px;
+              background: teal;
+              margin: 20px 0;
+              box-shadow: 0px 0px 4px 2px rgba(204, 204, 204, 1);
+            " />
+
+          <button type="number" class="btn btn-primary" (click)="sendTicket()" [disabled]="form.invalid">
+            Invia richiesta
+          </button>
+          <button type="number" class="btn btn-danger" routerLink="/contcli">
+            Ritorna alla lista contratti
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="col-lg-4">
+      <div class="container-lg text-center">
+        <div class="row">
+          <div class="col-auto">
+            <h2 class="text-info m-3">Riepilogo selezione:</h2>
+            <div *ngIf="riepilogo.contrattoId" class="card d-lg-inline-flex" style="width: 10rem">
+              <div class="card-body">
+                <h5 class="card-title">
+                  Contratto: {{ riepilogo.contrattoId.titoloContratto }}
+                </h5>
+                <p>
+                  durata: {{ riepilogo.contrattoId.durataMin }} - {{ riepilogo.contrattoId.durataMax }}
+                </p>
+              </div>
+            </div>
+            <div *ngIf="riepilogo.vetturaId" class="card d-lg-inline-flex" style="width: 10rem">
+              <div class="card-body">
+                <h5 class="card-title">
+                  Vettura: {{ riepilogo.vetturaId.marca }} - {{ riepilogo.vetturaId.modello }}
+                </h5>
+              </div>
+            </div>
+            <div *ngIf="riepilogo.noleggiatoreId" class="card d-lg-inline-flex"
+              style="width: 10rem">
+              <div class="card-body">
+                <h5 class="card-title">
+                  Ti ha servito: {{ riepilogo.noleggiatoreId.nome }} -
+                  {{ riepilogo.noleggiatoreId.cognome }}
+                </h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ottimo form per i pagamenti -->
+
+<!-- <label for="carta">Inserire il numero della carta
+        <img src="../../assets/img/mastercard.png" alt="" style="height: 1rem; margin: 5px" />
+        <img src="../../assets/img/Postepay.png" alt="" style="height: 2rem; margin: 5px" />
+        <img src="../../assets/img/visa.png" alt="" style="height: 1rem; margin: 5px" />
+        <img src="../../assets/img/Bancomat.jpg" alt="" style="height: 1rem; margin: 5px" />
+      </label>
+      <input type="text" class="form-control" id="carta" placeholder="Numero della carta" />
+
+      <hr style="height: 5px; background: teal; margin: 20px 0; box-shadow: 0px 0px 4px 2px rgba(204,204,204,1);"> -->
